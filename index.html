@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amni Batrisha - Food Technology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Rule 4: Updated Color Palette with Deep Ocean Blue Accent */
+            --color-white: #ffffff;
+            --color-soft-grey: #f4f7f9; /* Background */
+            --color-card-background: #ffffff;
+            --color-text: #212121;
+            --color-text-secondary: #6e7a83;
+            --color-accent: #004b8d; /* Deep Ocean Blue (UMT Theme) */
+            --color-border: #e2e8f0;
+            --border-radius: 12px;
+            --spacing-unit: 16px;
+        }
+
+        /* General Reset and Typography */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-soft-grey);
+            color: var(--color-text);
+            line-height: 1.6;
+            margin: 0;
+            padding: var(--spacing-unit);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Bento Grid Layout (Rule 2: Desktop Grid) */
+        .bento-grid {
+            display: grid;
+            gap: var(--spacing-unit);
+            grid-template-columns: repeat(3, 1fr); 
+            grid-auto-rows: minmax(180px, auto);
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: var(--color-card-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-unit);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--color-accent);
+        }
+
+        .card-content {
+            flex-grow: 1;
+        }
+
+        .text-large {
+            font-size: 1.8em;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .text-tagline {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 16px;
+        }
+
+        .text-medium {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+        
+        .text-small {
+            font-size: 0.9em;
+            color: var(--color-text-secondary);
+        }
+        
+        /* List styling for Card 3 */
+        .subject-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .subject-list li {
+            padding: 4px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .subject-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Social Links styling for Card 1 */
+        .social-links {
+            margin-top: 10px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: var(--color-accent);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: #003666; /* Darker accent on hover */
+        }
+
+        /* Grid Item Sizing (Desktop Layout) */
+        #card-profile { grid-column: span 2; grid-row: span 2; justify-content: space-between; }
+        #card-location { grid-column: span 1; grid-row: span 1; align-items: center; justify-content: center; text-align: center; }
+        #card-tech-stack { grid-column: span 1; grid-row: span 1; }
+        #card-case-study { grid-column: span 1; grid-row: span 1; }
+        #card-hobby { grid-column: span 1; grid-row: span 1; align-items: center; justify-content: center; text-align: center; }
+        #card-playlist { grid-column: span 3; grid-row: span 1; }
+
+        /* Responsive Design (Rule 2: Mobile Stacked) */
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr; 
+                grid-auto-rows: auto;
+            }
+
+            .card {
+                grid-column: auto !important;
+                grid-row: auto !important;
+                min-height: 150px;
+            }
+
+            #card-profile {
+                min-height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header style="padding: 0 0 var(--spacing-unit) 0;">
+            <h1 style="font-size: 2em; font-weight: 900; color: var(--color-text);">
+                <span style="color: var(--color-accent);">FT</span> Student Dashboard
+            </h1>
+        </header>
+
+        <main class="bento-grid">
+            <div id="card-profile" class="card">
+                <div class="card-title">PROFILE & CONTACT</div>
+                <div class="card-content">
+                    <p class="text-large">AMNI BATRISHA BT CHE MUHAMAD</p>
+                    <p class="text-medium">B. App. Sc. (Food Technology)</p>
+                    <p class="text-small">UMT, Year 1 Student</p>
+                    <p class="text-tagline">"Innovating food safety."</p>
+                </div>
+                <div class="social-links">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">UMT Portal</a>
+                </div>
+            </div>
+
+            <div id="card-location" class="card">
+                <div class="card-title" style="text-align: center;">CURRENT LOCATION</div>
+                <p class="text-medium">UMT, Kuala Nerus</p>
+                <p class="text-small">Local Time: 10:45 AM (+08)</p>
+            </div>
+
+            <div id="card-tech-stack" class="card">
+                <div class="card-title">CORE MODULES & SKILLS</div>
+                <ul class="subject-list">
+                    <li><span class="text-medium">Food Chemistry</span></li>
+                    <li><span class="text-medium">Microbiology</span></li>
+                    <li><span class="text-medium">Excel</span></li>
+                    <li><span class="text-medium">Lab Analysis</span></li>
+                </ul>
+            </div>
+
+            <div id="card-case-study" class="card">
+                <div class="card-title">RECENT RESEARCH (LAB)</div>
+                <p class="text-large" style="color: var(--color-accent);">'Starch Gelatinization in Local Kuih'</p>
+                <p class="text-small">Project Description: Analyzing texture profiles of Kuih Lapis.</p>
+            </div>
+
+            <div id="card-hobby" class="card">
+                <div class="card-title" style="text-align: center;">PERSONAL WELLNESS</div>
+                <p class="text-medium">Evening walks at Pantai UMT</p>
+                <p class="text-small">Favorite Spot: The Lighthouse</p>
+            </div>
+
+            <div id="card-playlist" class="card">
+                <div class="card-title">STUDY PLAYLIST</div>
+                <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <p class="text-medium" style="color: var(--color-text-secondary);">[Embedded Music Player Placeholder]</p>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
