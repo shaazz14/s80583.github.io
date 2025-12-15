@@ -8,7 +8,7 @@
     
     <style>
         :root {
-            /* Rule 4: Updated Color Palette with Deep Ocean Blue Accent */
+            /* Updated Color Palette with Deep Ocean Blue Accent */
             --color-white: #ffffff;
             --color-soft-grey: #f4f7f9; /* Background */
             --color-card-background: #ffffff;
@@ -41,7 +41,7 @@
             box-sizing: border-box;
         }
 
-        /* Bento Grid Layout (Rule 2: Desktop Grid) */
+        /* Bento Grid Layout (Desktop Grid) */
         .bento-grid {
             display: grid;
             gap: var(--spacing-unit);
@@ -63,101 +63,88 @@
         }
 
         .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08);
+            transform: scale(1.01); 
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
 
         .card-title {
             font-size: 1.1em;
             font-weight: 700;
             margin-bottom: 8px;
-            color: var(--color-accent);
-        }
-
-        .card-content {
-            flex-grow: 1;
-        }
-
-        .text-large {
-            font-size: 1.8em;
-            font-weight: 800;
-            margin-bottom: 4px;
-        }
-
-        .text-tagline {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: var(--color-text);
-            margin-bottom: 16px;
-        }
-
-        .text-medium {
-            font-size: 1.1em;
-            font-weight: 600;
-            color: var(--color-text);
+            color: var(--color-accent); /* Accent for other cards */
         }
         
-        .text-small {
-            font-size: 0.9em;
-            color: var(--color-text-secondary);
+        /* Card 1 Specific Styling */
+        /* --- START PROFILE CARD CSS UPDATE --- */
+        #card-profile { 
+            grid-column: span 2; 
+            grid-row: span 2; 
+            justify-content: space-between; 
+            color: var(--color-white); /* Change text color for dark background */
+            /* 1. Add the Image and Overlay */
+            background-image: 
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), /* Dark overlay for readability */
+                url('bg.jpg'); /* Your image file */
+            background-size: cover;
+            background-position: center;
+            background-color: #333; /* Fallback color */
+            border: none; /* Remove border if background image is used */
+        }
+
+        /* Override text color for elements inside the profile card */
+        #card-profile .card-title,
+        #card-profile .text-tagline,
+        #card-profile .text-medium,
+        #card-profile .text-large {
+            color: var(--color-white); /* Ensure primary text is white */
+        }
+
+        /* Override link color for the profile card to be white/light accent */
+        #card-profile .social-links a {
+            color: var(--color-white); 
+            text-decoration: underline;
         }
         
-        /* List styling for Card 3 */
-        .subject-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        #card-profile .social-links a:hover {
+            color: #d8d8d8; /* Slightly lighter white on hover */
         }
-        .subject-list li {
-            padding: 4px 0;
-            border-bottom: 1px solid var(--color-border);
-        }
-        .subject-list li:last-child {
-            border-bottom: none;
-        }
+        /* --- END PROFILE CARD CSS UPDATE --- */
+        
+        .card-content { flex-grow: 1; }
+        .text-large { font-size: 1.8em; font-weight: 800; margin-bottom: 4px; }
+        .text-tagline { font-size: 1.2em; font-weight: 600; margin-bottom: 16px; }
+        .text-medium { font-size: 1.1em; font-weight: 600; color: var(--color-text); }
+        .text-small { font-size: 0.9em; color: var(--color-text-secondary); }
+        
+        /* General styling for other cards */
+        .subject-list { list-style: none; padding: 0; margin: 0; }
+        .subject-list li { padding: 4px 0; border-bottom: 1px solid var(--color-border); }
+        .subject-list li:last-child { border-bottom: none; }
 
-        /* Social Links styling for Card 1 */
-        .social-links {
-            margin-top: 10px;
-            display: flex;
-            gap: 12px;
-        }
-
-        .social-links a {
-            text-decoration: none;
+        .social-links { margin-top: 10px; display: flex; gap: 12px; }
+        .social-links a { text-decoration: none; font-weight: 600; transition: color 0.2s; }
+        
+        /* Other Card link color (non-profile) */
+        .card:not(#card-profile) .social-links a {
             color: var(--color-accent);
-            font-weight: 600;
-            transition: color 0.2s;
         }
-
-        .social-links a:hover {
-            color: #003666; /* Darker accent on hover */
+        .card:not(#card-profile) .social-links a:hover {
+            color: #003666;
         }
 
         /* Grid Item Sizing (Desktop Layout) */
-        #card-profile { grid-column: span 2; grid-row: span 2; justify-content: space-between; }
         #card-location { grid-column: span 1; grid-row: span 1; align-items: center; justify-content: center; text-align: center; }
         #card-tech-stack { grid-column: span 1; grid-row: span 1; }
         #card-case-study { grid-column: span 1; grid-row: span 1; }
         #card-hobby { grid-column: span 1; grid-row: span 1; align-items: center; justify-content: center; text-align: center; }
+        #card-reflection { grid-column: span 1; grid-row: span 1; }
         #card-playlist { grid-column: span 3; grid-row: span 1; }
 
-        /* Responsive Design (Rule 2: Mobile Stacked) */
+        /* Responsive Design (Mobile Stacked) */
         @media (max-width: 768px) {
-            .bento-grid {
-                grid-template-columns: 1fr; 
-                grid-auto-rows: auto;
-            }
-
-            .card {
-                grid-column: auto !important;
-                grid-row: auto !important;
-                min-height: 150px;
-            }
-
-            #card-profile {
-                min-height: 250px;
-            }
+            .bento-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+            .card { grid-column: auto !important; grid-row: auto !important; min-height: 150px; }
+            #card-profile { min-height: 250px; }
         }
     </style>
 </head>
@@ -179,16 +166,16 @@
                     <p class="text-tagline">"Innovating food safety."</p>
                 </div>
                 <div class="social-links">
-                    <a href="#">LinkedIn</a>
-                    <a href="#">GitHub</a>
-                    <a href="#">UMT Portal</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                    <a href="#" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">UMT Portal</a>
                 </div>
             </div>
-
+            
             <div id="card-location" class="card">
                 <div class="card-title" style="text-align: center;">CURRENT LOCATION</div>
                 <p class="text-medium">UMT, Kuala Nerus</p>
-                <p class="text-small">Local Time: 10:45 AM (+08)</p>
+                <p class="text-small">Local Time: 11:56 AM (+08)</p>
             </div>
 
             <div id="card-tech-stack" class="card">
@@ -211,6 +198,11 @@
                 <div class="card-title" style="text-align: center;">PERSONAL WELLNESS</div>
                 <p class="text-medium">Evening walks at Pantai UMT</p>
                 <p class="text-small">Favorite Spot: The Lighthouse</p>
+            </div>
+            
+            <div id="card-reflection" class="card">
+                <div class="card-title">WHY FOOD TECH MATTERS IN MALAYSIA</div>
+                <p class="text-small">Sustainable food security is crucial for our future. By optimizing local processing methods, we can reduce waste and improve nutrition.</p>
             </div>
 
             <div id="card-playlist" class="card">
